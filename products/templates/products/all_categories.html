@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}All Categories{% endblock %}
+
+{% block content %}
+    <h2 class="text-center mb-4">All Categories</h2>
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for category in categories %}
+        <div class="btn-group m-2">
+    <a href="{% url 'all_products' %}?category_id={{ category.id }}" class="btn btn-outline-primary">
+        {{ category.name }}
+    </a>
+    <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>
+            <a href="{% url 'update_category' category_id=category.id %}" class="dropdown-item">Update Category: {{ category.name }}</a>
+        </li>
+    </ul>
+</div>
+        {% endfor %}
+          <a href="{% url 'add_category' %}" class="btn btn-outline-primary m-2">
+           + ADD NEW CATEGORY
+               </a>
+    </div>
+{% endblock %}

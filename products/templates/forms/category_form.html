@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Category Form{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{% if category %}Update Category{% else %}Add Category{% endif %}</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Save</button>
+</form>
+</div>
+{% endblock %}
