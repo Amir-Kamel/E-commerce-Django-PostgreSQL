@@ -15,9 +15,11 @@ def all_products(request):
     category_id = request.GET.get('category_id')
     if category_id:
         products = Product.objects.filter(category_id=category_id)
+        category = Category.objects.get(id=category_id)
     else:
         products = Product.objects.all()
-    return render(request, 'products/all_products.html', {'products': products})
+        category = False
+    return render(request, 'products/all_products.html', {'products': products, 'category': category})
 
 def all_categories(request):
     categories = Category.objects.all()

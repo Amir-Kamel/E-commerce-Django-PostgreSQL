@@ -22,12 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h&yps2b8f4i@*+5zf4#+l$glq0vz7oo(a5fl#3w^)3cib(*t46'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+]
 
 
 # Application definition
@@ -39,9 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'products',
     'accounts',
+    'api',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +58,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+    ]
+}
 
 ROOT_URLCONF = 'Ecommerce.urls'
 
@@ -80,17 +92,17 @@ AUTHENTICATION_BACKENDS = [
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce_db',
-        'USER': 'djangouser',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "ecommerce_db",
+        "USER": "djangouser",
+        "PASSWORD": "12345",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
-
 
 
 # Password validation
@@ -127,7 +139,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -139,4 +151,4 @@ LOGOUT_REDIRECT_URL = reverse_lazy('all_products')
 LOGIN_URL = reverse_lazy('login')
 AUTH_USER_MODEL = 'accounts.User'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
