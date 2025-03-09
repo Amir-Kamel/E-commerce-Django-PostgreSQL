@@ -1,10 +1,28 @@
 {
   "version": 2,
-  "routes": [
-    { "src": "/(.*)", "dest": "/products/templates/products/all_products.html" }
-  ],
   "builds": [
-    { "src": "manage.py", "use": "vercel-python" }
-  ]
+    {
+      "src": "manage.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Ecommerce/wsgi.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "Ecommerce.settings",
+    "PYTHONUNBUFFERED": "1"
+  }
 }
 
