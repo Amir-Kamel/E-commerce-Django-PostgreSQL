@@ -93,23 +93,23 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ecommerce_db",
-        "USER": "djangouser",
-        "PASSWORD": "12345",
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
-
-# Use Railway Database in Production
-RAILWAY_DB_URL = os.getenv("DATABASE_URL")  # Railway provides DATABASE_URL
+RAILWAY_DB_URL = os.getenv("DATABASE_URL")  # Get DB URL from environment variables
 
 if RAILWAY_DB_URL:
-    DATABASES["default"] = dj_database_url.config(default=RAILWAY_DB_URL)
-
+    DATABASES = {
+        "default": dj_database_url.config(default=RAILWAY_DB_URL)
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "ecommerce_db",
+            "USER": "djangouser",
+            "PASSWORD": "12345",
+            "HOST": "localhost",
+            "PORT": "5432",
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
