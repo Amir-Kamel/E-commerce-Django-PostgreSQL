@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/(.*)", "dest": "/products/templates/products/all_products.html" }
+  ],
+  "builds": [
+    { "src": "manage.py", "use": "vercel-python" }
+  ]
+}
+
