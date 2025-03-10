@@ -2,19 +2,32 @@
   "version": 2,
   "builds": [
     {
-      "src": "manage.py",
+      "src": "Ecommerce/wsgi.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "staticfiles/",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/media/(.*)", "dest": "/media/$1" },
-    { "src": "/(.*)", "dest": "manage.py" }
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Ecommerce/wsgi.py"
+    }
   ],
   "env": {
-    "DJANGO_SETTINGS_MODULE": "Ecommerce.settings",
-    "PYTHONUNBUFFERED": "1",
-    "SECRET_KEY": "zn3=(n4oz8povb#i59@@yb&@8%ws6y+)3s9huy(9t_5de&wd7"
+    "DEBUG": "False",
+    "SECRET_KEY": "@secret-key",
+    "DATABASE_URL": "@database-url",
+    "ALLOWED_HOSTS": ".vercel.app"
   }
 }
-
