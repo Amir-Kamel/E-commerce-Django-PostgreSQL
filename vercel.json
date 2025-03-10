@@ -4,30 +4,12 @@
     {
       "src": "Ecommerce/wsgi.py",
       "use": "@vercel/python"
-    },
-    {
-      "src": "staticfiles/",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "/staticfiles/$1"
-    },
-    {
-      "src": "/media/(.*)",
-      "dest": "/media/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "Ecommerce/wsgi.py"
     }
-  ],
-  "env": {
-    "DEBUG": "False",
-    "SECRET_KEY": "@secret-key",
-    "DATABASE_URL": "@database-url",
-    "ALLOWED_HOSTS": ".vercel.app"
-  }
+  ]
 }
