@@ -7,22 +7,14 @@
     }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/staticfiles/$1"
-    },
-    {
-      "src": "/media/(.*)",
-      "dest": "/media/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "Ecommerce.wsgi.application"
-    }
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/media/(.*)", "dest": "/media/$1" },
+    { "src": "/(.*)", "dest": "manage.py" }
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "Ecommerce.settings",
-    "PYTHONUNBUFFERED": "1"
+    "PYTHONUNBUFFERED": "1",
+    "SECRET_KEY": "zn3=(n4oz8povb#i59@@yb&@8%ws6y+)3s9huy(9t_5de&wd7"
   }
 }
 

@@ -35,7 +35,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = True
 
 # Allow all hosts (for now)
-ALLOWED_HOSTS = ['e-commerce-django-postgresql.vercel.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -98,7 +98,7 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-RAILWAY_DB_URL = os.getenv("DATABASE_URL")  # Get DB URL from environment variables
+RAILWAY_DB_URL = os.getenv("DATABASE_URL", "")  # Default to an empty string if not found
 
 if RAILWAY_DB_URL:
     DATABASES = {
@@ -115,6 +115,7 @@ else:
             "PORT": "5432",
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
