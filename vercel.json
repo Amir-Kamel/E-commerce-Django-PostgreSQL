@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1"
+      "dest": "/staticfiles/$1"
     },
     {
       "src": "/media/(.*)",
@@ -17,7 +17,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "Ecommerce.wsgi.application"
     }
   ],
   "env": {
