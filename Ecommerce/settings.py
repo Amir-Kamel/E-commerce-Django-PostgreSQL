@@ -35,7 +35,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = True
 
 # Allow all hosts (for now)
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['e-commerce-django-postgresql.vercel.app']
+
 
 # Application definition
 
