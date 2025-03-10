@@ -36,7 +36,9 @@ STATIC_URL = '/static/'
 DEBUG = True
 
 # Allow all hosts (for now)
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "e-commerce-django-postgresql-production.up.railway.app"]
+
+CSRF_TRUSTED_ORIGINS = ["https://e-commerce-django-postgresql-production.up.railway.app"]
 
 
 # Application definition
