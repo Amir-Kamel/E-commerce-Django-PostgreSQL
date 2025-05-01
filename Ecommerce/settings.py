@@ -29,9 +29,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', '$zn3=(n4oz8povb#i59@@yb&@8%ws6y+)3s9huy(9t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 # Allow all hosts (for now)
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "e-commerce-django-postgresql-production.up.railway.app"]
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ["https://e-commerce-django-postgresql-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ['*']
 
 
 # Application definition
